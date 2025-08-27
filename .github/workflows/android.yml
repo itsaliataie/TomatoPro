@@ -9,23 +9,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-    - name: Unzip project
-      run: unzip TomatoPro_Full_Project.zip -d extracted
-    - name: Build debug APK
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: assembleDebug
-        build-root-directory: extracted/TomatoPro
-    - name: Upload APK artifact
-      uses: actions/-artifact@v3
-      with:
-        name: debug-apk
-        path: extracted/TomatoPro/app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Unzip project
+        run: unzip TomatoPro_Full_Project.zip -d extracted
+      - name: Build debug APK
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: assembleDebug
+          build-root-directory: extracted/TomatoPro
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: debug-apk
+          path: extracted/TomatoPro/app/build/outputs/apk/debug/app-debug.apk
