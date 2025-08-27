@@ -23,6 +23,8 @@ jobs:
         with:
           arguments: assembleDebug
           build-root-directory: extracted/TomatoPro
+          # Specify a Gradle version since the project zip does not include a Gradle wrapper
+          gradle-version: 8.3
       - name: Upload APK artifact
         # Use v4 of upload-artifact since v3 has been deprecated
         uses: actions/upload-artifact@v4
