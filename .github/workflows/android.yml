@@ -27,6 +27,8 @@ jobs:
           build-root-directory: extracted/TomatoPro
           # Specify a Gradle version since the project zip does not include a Gradle wrapper
           gradle-version: 8.3
+          # Disable caching for Gradle to avoid cache save failures causing job failure.
+          cache-disabled: true
       - name: Upload APK artifact
         # Use v4 of upload-artifact since v3 has been deprecated
         uses: actions/upload-artifact@v4
